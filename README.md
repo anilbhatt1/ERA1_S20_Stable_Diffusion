@@ -1,11 +1,45 @@
 ## Stable Diffusion
 
+- **Perceptual Loss**
+  - Layer-0 of VGG16 model was used as feature extractor
+  - It extracts features from both denoised image and the reference image supplied by user
+  - Both the features are passed through a MSE loss function so that denoised image will fit towards the refernce image
+  - Loss will be applied at fixed intervals like once in 10 iterations on denoised image
+  ```
+  def perceptual_loss(images, pattern):
+    criterion = nn.MSELoss()
+    mse_loss = criterion(images, pattern)
+    return mse_loss
+  ```
+  - Loss calculation inside inference is as follows:
+  ```
+      pattern_loss_scale = 20
+      for i, t in tqdm(enumerate(scheduler.timesteps)):
+        ...
+        ...
+        if (i%3 == 0):      
+            ...
+            ...
+              # Calculate loss
+            denoised_images_extr = feature_extractor(denoised_images)
+            reference_img_extr = feature_extractor(tfm_pattern_image)
+            loss = perceptual_loss(denoised_images_extr, reference_img_extr) * pattern_loss_scale
+            # Get gradient
+            cond_grad = torch.autograd.grad(loss, latents)[0]
+            # Modify the latents based on this gradient
+            latents = latents.detach() - cond_grad * sigma**2          
+  ```
+
 - **ERA1_S20_Stable_Diffusion_with_percept_loss_V1.ipynb**
   - Stable diffusion with manually loading styles & successfully using perception loss
   - Notebook Link : https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/ERA1_S20_Stable_Diffusion_with_percept_loss_pipeline_V3.ipynb
 - **ERA1_S20_Stable_Diffusion_with_percept_loss_pipeline_V3.ipynb** 
   - Stable diffusion using diffusionpipeline with styles downloaded on-the-fly & successfully using perception loss
   - Notebook Link : https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/ERA1_S20_Stable_Diffusion_with_percept_loss_pipeline_V3.ipynb
+- **ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb**
+  - Gradio inferencing with GPU using diffusionpipeline with styles downloaded on-the-fly & successfully using perception loss
+  - Notebook Link : https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb
+
 - Results : With style but without perception loss
   - Prompt Supplied : **A boy running in the style of a tiger**
     
@@ -25,3 +59,7 @@
   - Prompt Supplied : **A boy running in the style of a <style>**
     
 ![results_styles_pipeline_perceptual_loss](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/c79ebbac-7bba-499a-afd4-7520c974c3d7)
+
+- Results : Gradio inferencing with GPU T4 (Colab) With styles and perception loss (using diffusion pipeline)
+  - Prompt Supplied : **A toddler gazing at sky in the style of <birb>**
+
