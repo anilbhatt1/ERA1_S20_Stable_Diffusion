@@ -39,7 +39,10 @@
 - **ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb**
   - Gradio inferencing with GPU using diffusionpipeline with styles downloaded on-the-fly & successfully using perception loss
   - Notebook Link : https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb
-
+- **app.py** and **requirements.txt**
+  - app.py and requirements.txt are hosting the app in Hugging Face GPU space
+  - Link for app.py: https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/app.py
+    
 ### Reference Image supplied for perceptual loss
 
 ![wd7](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/ed23b3df-fd29-4d3e-bc98-23eb2387b240)
