@@ -39,32 +39,38 @@
 - **ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb**
   - Gradio inferencing with GPU using diffusionpipeline with styles downloaded on-the-fly & successfully using perception loss
   - Notebook Link : https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/blob/master/ERA1_S20_Stable_Diffusion_gradio_gpu_inference_V4.ipynb
-- Reference Image supplied for perceptual loss
+
+### Reference Image supplied for perceptual loss
 
 ![wd7](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/ed23b3df-fd29-4d3e-bc98-23eb2387b240)
 
   
-- Results : With style but without perceptual loss
+### Results : With style but without perceptual loss
+  
   - Prompt Supplied : **A boy running in the style of a tiger**
     
 ![results_styles_no_loss](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/36b275a8-90a9-420f-8038-469cae1eed7f)
 
-- Results : Without any style but with perceptual loss
+### Results : Without any style but with perceptual loss
+  
   - Prompt Supplied : **A boy dreaming gazing at the skies**
     
 ![results_no_styles_perceptual_loss](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/904241fe-70b2-480e-8d1e-16489ec4b0dc)
 
-- Results : With styles and perceptual loss (manully loading styles)
+### Results : With styles and perceptual loss (manully loading styles)
+  
   - Prompt Supplied : **A boy running in the style of a <style>**
     
 ![results_styles_perceptual_loss](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/4c541536-8578-4d9a-ab4a-de622509acc3)
 
-- Results : With styles and perceptual loss (using diffusion pipeline)
+### Results : With styles and perceptual loss (using diffusion pipeline)
+  
   - Prompt Supplied : **A boy running in the style of a <style>**
     
 ![results_styles_pipeline_perceptual_loss](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/c79ebbac-7bba-499a-afd4-7520c974c3d7)
 
-- Results : Gradio inferencing with GPU T4 (Colab) With styles and perceptual loss (using diffusion pipeline)
+### Results : Gradio inferencing with GPU T4 (Colab) With styles and perceptual loss (using diffusion pipeline)
+  
   - Prompt Supplied : **A toddler gazing at sky in the style of <birb>**
 
 ![results_gradio](https://github.com/anilbhatt1/ERA1_S20_Stable_Diffusion/assets/43835604/9453bf38-efb6-4f79-81df-300c18981c1b)
